@@ -8,7 +8,17 @@ class Credentials:
         self.platform = platform
         self.username = username
         self.password = password
-    def save_cred(self):
+        
+    def save_password(self):
         Credentials.locker[self.platform] = {self.username: self.password} # nested dictionary
         print(Credentials.locker)
         print(len(Credentials.locker))
+
+    @classmethod
+    def display_password(clas):
+        print(Credentials.locker)
+        
+    def delete_password(self):
+        del Credentials.locker[self.platform]
+        print(len(Credentials.locker))
+
