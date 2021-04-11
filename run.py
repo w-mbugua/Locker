@@ -35,6 +35,8 @@ while True:
 
                 for i in range(3):
                     pswd_string = pswd_string + random.choice(string.ascii_letters) + str(random.randint(101, 1001)) + random.choice('!$%&()*<>?@^_')
+                
+                new_password = pswd_string
             else:
                 print("Incorrect password. Please try again")
                 continue #test these continues
@@ -45,9 +47,15 @@ while True:
         new_account = Credentials(new_platform, new_username, new_password)
         print(f"Successfully saved credentials for {new_account.platform}!\nUsername - {new_account.username}\nPassword - {new_account.password}")
     elif choice == "display":
-        pass
-    elif choice == "display":
-        pass
+        Credentials.display_password()
+    elif choice == "delete":
+        to_delete = input("Enter the account to delete from locker\n")
+        # check if it's in locker
+        if to_delete in Credentials.locker:
+            new_account.delete_password()
+        else:
+            print("Sorry. You don't seem to have such an account in locker")
+            continue #check if its necessary
     elif choice == "copy":
         pass
     else:
