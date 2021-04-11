@@ -29,6 +29,14 @@ class TestUser(unittest.TestCase):
         self.new_credential.save_cred()
         self.assertEqual(len(Credentials.locker), 1)
 
+    @classmethod
+    def display_creds(clas):
+        print(Credentials.locker)
+        
+    def delete_cred(self):
+        del Credentials.locker[self.platform]
+        print(len(Credentials.locker))
+
 
     
 if __name__ == '__main__':
