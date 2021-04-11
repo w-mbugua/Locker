@@ -46,6 +46,11 @@ class TestUser(unittest.TestCase):
         self.new_credential.delete_password()
         self.assertEqual(len(Credentials.locker),1)
         # print("The length is stll", len(Credentials.locker), Credentials.locker)
+    def test_displays_passwords(self):
+        '''
+        method that returns a list of all passwords in the locker
+        '''
+        self.assertEqual(Credentials.display_password(), Credentials.locker)
 
 
     
