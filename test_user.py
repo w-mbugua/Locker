@@ -20,5 +20,11 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.name, "Doe")
         self.assertEqual(self.new_user.password, "bRt456")
+    def test_save_manager(self):
+        '''
+        test to check whether the manager login details are saved 
+        '''
+        self.new_user.save_manager()
+        self.assertEqual(len(User.users), 1)
 if __name__ == '__main__':
     unittest.main()
