@@ -26,5 +26,6 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user.save_manager()
         self.assertEqual(len(User.users), 1)
+    
 if __name__ == '__main__':
     unittest.main()
