@@ -18,9 +18,23 @@ while True:
             new_password = input("Enter password: ")
             # create credentials for a non-existing account
         elif exists == 'no':
-            pass
+            # create for a new/non-existent account
+            new_platform = input("Enter platform: ")
+            new_username = input("Enter the username: ")
+
+            # generate passowrd or create?
+            pswd_option = input("Enter 'generate' to autogenerate a password or 'create' to create your own\n")
+
+            if pswd_option == 'create':
+                new_password = input("Enter password: ")
+            elif pswd_option == "generate":
+                pass
+            else:
+                print("Incorrect password. Please try again")
+                continue #test these continues
         else:
             print("Incorrect input. Please try again")
+            continue
         # create the account and print a message
         new_account = Credentials(new_platform, new_username, new_password)
         print(f"Successfully saved credentials for {new_account.platform}!\nUsername - {new_account.username}\nPassword - {new_account.password}")
