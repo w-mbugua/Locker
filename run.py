@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 from creds import Credentials
+import string
+import random
 
 while True:
     choice = input("Enter 'create' to create new credentials, 'display' to view your saved credentials, 'delete' to delete credentials, or 'copy' to copy an account's password and 'none' to exit:\n")
@@ -28,7 +30,11 @@ while True:
             if pswd_option == 'create':
                 new_password = input("Enter password: ")
             elif pswd_option == "generate":
-                pass
+                # generate a password using random
+                pswd_string = ''
+
+                for i in range(3):
+                    pswd_string = pswd_string + random.choice(string.ascii_letters) + str(random.randint(101, 1001)) + random.choice('!$%&()*<>?@^_')
             else:
                 print("Incorrect password. Please try again")
                 continue #test these continues
