@@ -22,6 +22,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_credential.username, "JM")
         self.assertEqual(self.new_credential.password, "Password2021")
 
+    def test_save_manager(self):
+        '''
+        test to check whether the password details are saved 
+        '''
+        self.new_credential.save_cred()
+        self.assertEqual(len(Credentials.locker), 1)
+
 
     
 if __name__ == '__main__':
