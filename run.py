@@ -3,7 +3,7 @@ from creds import Credentials
 from user import User
 import string
 import random
-
+import pyperclip
 
 
 def main ():
@@ -51,7 +51,7 @@ def main ():
                         pswd_string = ''
 
                         for i in range(3):
-                            pswd_string = pswd_string + random.choice(string.ascii_letters) + str(random.randint(1, 10)) + random.choice('!$%&()*<>?@^_')
+                            pswd_string = pswd_string + random.choice(string.ascii_letters) + str(random.randint(1, 10)) + random.choice('!$%&(*>?@^_')
                         
                         new_password = pswd_string
                     else:
@@ -65,7 +65,12 @@ def main ():
                 print(f"Successfully saved credentials for {new_account.platform}!\nUsername - {new_account.username}\nPassword - {new_account.password}")
                 new_account.save_password()
             elif choice == "display":
-                Credentials.display_password()
+                # Credentials.display_password() 
+                for item in Credentials.locker:
+                    print(item,'.....')
+                    item = Credentials.locker[item]
+                    for key in item:
+                        print(f"Username: {key}; Password: {item[key]}\n")
             elif choice == "delete":
                 to_delete = input("Enter the account to delete from locker\n")
                 # check if it's in locker
@@ -78,7 +83,12 @@ def main ():
                 else:
                     print("Sorry. You don't seem to have such an account in locker")
             elif choice == "copy":
-                pass
+                copy = input("Enter account you would like to copy password:")
+                if copy in Credentials.locker:
+                    copied = Credentials.locker[copy][new_username]
+                    pyperclip.copy(copied)
+                else:
+                    print("Sorry. You don't seem to have such an account in locker. Please check your spelling or save it first")
             else:
                 print("Incorrect input. Please try again")
         else:

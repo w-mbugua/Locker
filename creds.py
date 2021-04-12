@@ -1,4 +1,4 @@
-
+import pyperclip
 class Credentials:
     '''
     class for generating and managing a user's passwords
@@ -22,11 +22,7 @@ class Credentials:
         '''
         method to display all passwords saved
         '''
-        for item in Credentials.locker:
-            print(item.upper(),'.....')
-            item = Credentials.locker[item]
-            for key in item:
-                print(f"Username: {key}; Password: {item[key]}\n")
+        return Credentials.locker
         
     def delete_password(self):
         '''
@@ -34,4 +30,8 @@ class Credentials:
         '''
         del Credentials.locker[self.platform]
         print(len(Credentials.locker))
+
+    def copy_password(self):
+        pyperclip.copy(self.password)
+    
 
