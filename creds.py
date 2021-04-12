@@ -22,7 +22,11 @@ class Credentials:
         '''
         method to display all passwords saved
         '''
-        return Credentials.locker # have to print
+        for item in Credentials.locker:
+            print(item.upper(),'.....')
+            item = Credentials.locker[item]
+            for key in item:
+                print(f"Username: {key}; Password: {item[key]}\n")
         
     def delete_password(self):
         '''

@@ -65,7 +65,7 @@ def main ():
                 print(f"Successfully saved credentials for {new_account.platform}!\nUsername - {new_account.username}\nPassword - {new_account.password}")
                 new_account.save_password()
             elif choice == "display":
-                print(Credentials.display_password())
+                Credentials.display_password()
             elif choice == "delete":
                 to_delete = input("Enter the account to delete from locker\n")
                 # check if it's in locker
