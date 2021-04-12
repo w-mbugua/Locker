@@ -35,6 +35,15 @@ class TestUser(unittest.TestCase):
         self.new_credential.save_password()
         self.assertEqual(len(Credentials.locker), 1)
 
+    def test_save_multiple_passwords(self):
+        '''
+        test_save_multiple_contact to check whether we can save multiple contacts in the contact_list
+        '''
+        self.new_credential.save_password()
+        test_password = Credentials("Test","user","bvgtfy65")
+        test_password.save_password()
+        self.assertEqual(len(Credentials.locker),2)
+
     def test_delete_password(self):
         '''
         test method that tests whether passwords get deleted from the password locker

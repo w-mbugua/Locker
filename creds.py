@@ -10,15 +10,24 @@ class Credentials:
         self.password = password
 
     def save_password(self):
+        '''
+        method for saving passwords and their respective platforms
+        '''
         Credentials.locker[self.platform] = {self.username: self.password} # nested dictionary
         print(Credentials.locker)
         print(len(Credentials.locker))
 
     @classmethod
     def display_password(clas):
+        '''
+        method to display all passwords saved
+        '''
         return Credentials.locker # have to print
         
     def delete_password(self):
+        '''
+        method to display all passwords saved
+        '''
         del Credentials.locker[self.platform]
         print(len(Credentials.locker))
 
